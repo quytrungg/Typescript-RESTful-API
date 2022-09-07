@@ -1,0 +1,27 @@
+{
+  "name": "typesscript",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon src/server.ts"
+  },
+  "author": "Quy Trung Mai",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "inversify": "^6.0.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.14",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.8.2"
+  }
+}
