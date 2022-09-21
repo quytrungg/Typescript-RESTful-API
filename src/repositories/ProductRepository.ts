@@ -1,5 +1,11 @@
+import BaseRepository from "../core/infrastructure/BaseReposity";
+import ProductSchema from "../schemas/ProductSchema";
+import { injectable } from "inversify";
+import { ProductModel } from "../models/Products";
 
-
-export default class ProductRepository{
-
+@injectable()
+export class ProductRepository extends BaseRepository<ProductModel>{
+    constructor(){
+        super(ProductSchema);
+    }
 };
