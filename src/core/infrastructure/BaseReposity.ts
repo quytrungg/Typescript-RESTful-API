@@ -3,7 +3,7 @@ import { Model, Document, LeanDocument } from "mongoose";
 import { pick } from "lodash";
 import { injectable, unmanaged } from "inversify";
 import * as Q from "q";
-// import Log from "../logs/Log";
+import Log from "../logs/Log";
 
 @injectable()
 export default class BaseRepository<DataModel>{
@@ -13,13 +13,14 @@ export default class BaseRepository<DataModel>{
         this._model = schemaModel;
     }
 
+    // create a model
     async create(data: DataModel, selectedFields?: string[]): Promise<DataModel> {
         return await this._model.create(data)
             .then((result) => {
                 return selectedFields ? pick(result, selectedFields) : result;
             })
             .catch((err) => {
-                console.error(err);
+                Log.error(err);
                 throw err;
             });
     }

@@ -1,6 +1,8 @@
 import {config} from "dotenv";
 import cors from "cors";
-import DataConnection from './core/infrastructure/DataConnection';
+import Configuration from "./core/middleware/Configuration";
+import { DataConnection } from "./core/infrastructure/DataConnection";
+import Log from "./core/logs/Log";
 const express = require('express');
 const bodyParser = require('body-parser')
 
@@ -12,22 +14,23 @@ function setupEnv(){
 }
 
 function setupServer() {
-    console.log("Start API Server in environment " + process.env.NODE_ENV);
+    Log.info("Start API Server in environment " + process.env.NODE_ENV);
 
     DataConnection.init();
 
     let app = express();
 
     app.use(express.static('pages'))
-    app.use(cors()) // or setup custom CORS in Configuration.ts
     app.use(bodyParser.json())
+    app.use(cors()) 
+    // Configuration.setup(app);
 
     //app.use(bodyParser.urlencoded({ extended: false }))
 
     let PORT = process.env.PORT || 3000;
 
     app.listen(PORT, () =>{
-        console.log(`Server listening on port: ${PORT} ...`);
+        Log.info(`Server listening on port: ${PORT} ...`);
     });
 }
 
@@ -36,7 +39,7 @@ function API(){
         setupEnv();
         setupServer();
     } catch (err) {
-        console.error("Can't start API server ", err);
+        Log.error("Can't start API server ", err);
     }
 }
 

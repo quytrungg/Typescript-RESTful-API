@@ -9,14 +9,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "callsites": "^3.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "inversify": "^6.0.1",
     "lodash": "^4.17.21",
-    "reflect-metadata": "0.1.3",
     "mongoose": "^5.13.3",
     "q": "^1.5.1",
-    "callsites": "^3.1.0"
+    "reflect-metadata": "0.1.3",
+    "ts-node": "^10.9.1",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
