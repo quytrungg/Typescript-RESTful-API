@@ -1,4 +1,4 @@
-import DataConnection from './../core/infrastructure/DataConnection';
+import {DataConnection} from './../core/infrastructure/DataConnection';
 const mongoose = DataConnection.dbInstance;
 
 const productSchema = new mongoose.Schema({

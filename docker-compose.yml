@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    depends_on:
+      - mongodb
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./.env:/usr/src/app/.env
+    networks:
+      - nodeapp-network
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+    command: yarn start
+
+  mongodb:
+    image: mongo
+    container_name: mongo
+    volumes:
+      - .docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+      - .docker/mongodb/migrations/:/migrations/
+      - mongo_data:/data/db
+    ports:
+      - "27018:27017"
+    networks:
+      - nodeapp-network
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: ["--bind_ip_all"]
+
+networks:
+  nodeapp-network:
+    driver: bridge
+volumes:
+  mongo_data:

@@ -34,7 +34,7 @@ function setupServer() {
     });
 }
 
-function API(){
+function callAPI(){
     try {
         setupEnv();
         setupServer();
@@ -43,4 +43,4 @@ function API(){
     }
 }
 
-API()
+callAPI()

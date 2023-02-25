@@ -1,7 +1,7 @@
 import Mongoose = require("mongoose");
 import Log from "../logs/Log";
 
-export class DataConnection {
+export class  DataConnection {
     static dbInstance = Mongoose;
     static dbConnection = this.dbInstance.connection;
 
